@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- English (default / fallback) -->
+<resources>
+    <string name="app_name" translatable="false">TugasKu</string>
+
+    <!-- Language -->
+    <string name="language">Language</string>
+    <string name="lang_system">Follow system</string>
+    <string name="lang_indonesian" translatable="false">Bahasa Indonesia</string>
+    <string name="lang_english" translatable="false">English</string>
+
+    <!-- Common -->
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="save">Save</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="close">Close</string>
+    <string name="clear">Clear</string>
+    <string name="add">Add</string>
+    <string name="share">Share</string>
+    <string name="undo">Undo</string>
+    <string name="calendar">Calendar</string>
+    <string name="attachment">Attachments</string>
+    <string name="link_open_error">No app can open this link</string>
+    <string name="cd_photo">Attached photo</string>
+
+    <!-- Widget -->
+    <string name="widget_empty">No active tasks</string>
+    <plurals name="widget_count">
+        <item quantity="one">%d active</item>
+        <item quantity="other">%d active</item>
+    </plurals>
+
+    <!-- Notifications -->
+    <string name="notif_channel_name">Task reminders</string>
+    <string name="notif_channel_desc">Reminder notifications for task deadlines</string>
+    <string name="notif_deadline">Deadline: %1$s</string>
+    <string name="notif_action_done">Done</string>
+    <string name="notif_action_snooze">Snooze %1$s</string>
+
+    <!-- Reminder options -->
+    <string name="remind_on_time">On time</string>
+    <string name="remind_1h">1 hour before</string>
+    <string name="remind_3h">3 hours before</string>
+    <string name="remind_1d">1 day before</string>
+    <string name="remind_3d">3 days before</string>
+
+    <!-- Relative time -->
+    <string name="rel_due_now">Due now</string>
+    <plurals name="rel_left_minutes">
+        <item quantity="one">%d minute left</item>
+        <item quantity="other">%d minutes left</item>
+    </plurals>
+    <plurals name="rel_left_hours">
+        <item quantity="one">%d hour left</item>
+        <item quantity="other">%d hours left</item>
+    </plurals>
+    <plurals name="rel_left_days">
+        <item quantity="one">%d day left</item>
+        <item quantity="other">%d days left</item>
+    </plurals>
+    <plurals name="rel_late_minutes">
+        <item quantity="one">Overdue by %d minute</item>
+        <item quantity="other">Overdue by %d minutes</item>
+    </plurals>
+    <plurals name="rel_late_hours">
+        <item quantity="one">Overdue by %d hour</item>
+        <item quantity="other">Overdue by %d hours</item>
+    </plurals>
+    <plurals name="rel_late_days">
+        <item quantity="one">Overdue by %d day</item>
+        <item quantity="other">Overdue by %d days</item>
+    </plurals>
+
+    <!-- Task list -->
+    <string name="filter_active">Active</string>
+    <string name="filter_overdue">Overdue</string>
+    <string name="filter_done">Done</string>
+    <string name="filter_all">All</string>
+    <string name="tagline">Organize your tasks, never be late</string>
+    <plurals name="active_tasks_count">
+        <item quantity="one">%d active task</item>
+        <item quantity="other">%d active tasks</item>
+    </plurals>
+    <plurals name="tasks_count">
+        <item quantity="one">%d task</item>
+        <item quantity="other">%d tasks</item>
+    </plurals>
+    <string name="stat_urgent">Urgent</string>
+    <string name="stat_overdue">Overdue</string>
+    <string name="stat_done">Done</string>
+    <string name="search_hint">Search title, course, lecturer…</string>
+    <string name="chip_by_subject">By course</string>
+    <string name="chip_archive_trash">Archive &amp; trash</string>
+    <string name="no_subject">No course</string>
+    <string name="new_task">New task</string>
+    <string name="edit_task">Edit task</string>
+    <string name="snackbar_trash">Moved to trash</string>
+    <string name="snackbar_done">Marked as done</string>
+    <string name="swipe_reactivate">Reactivate</string>
+    <string name="swipe_done">Done</string>
+    <string name="swipe_delete">Delete</string>
+    <string name="dialog_trash_title">Move to trash?</string>
+    <string name="dialog_trash_text">\"%1$s\" will be moved to trash and permanently deleted after %2$d days.</string>
+    <string name="empty_overdue">No overdue tasks</string>
+    <string name="empty_done">No completed tasks yet</string>
+    <string name="empty_default">No tasks yet. Tap \"New task\"!</string>
+    <plurals name="more_links">
+        <item quantity="one">+%d more link</item>
+        <item quantity="other">+%d more links</item>
+    </plurals>
+    <plurals name="photo_count">
+        <item quantity="one">%d photo</item>
+        <item quantity="other">%d photos</item>
+    </plurals>
+
+    <!-- Editor -->
+    <string name="editor_title_label">Title / task notes *</string>
+    <string name="editor_title_error">Title can\'t be empty</string>
+    <string name="editor_subject">Subject / course</string>
+    <string name="editor_lecturer">Lecturer / teacher name</string>
+    <string name="editor_note">Additional details (optional)</string>
+    <string name="editor_deadline_heading">Submission deadline</string>
+    <string name="editor_link_hint">Paste a link (Drive, e-learning…)</string>
+    <string name="editor_add_photo">Add photo of the task</string>
+    <string name="editor_remind_heading">Remind me (you can pick several)</string>
+    <string name="editor_repeat_title">Repeat weekly</string>
+    <string name="editor_repeat_desc">When marked done, next week\'s task is created automatically</string>
+
+    <!-- Calendar -->
+    <string name="cal_prev_month">Previous month</string>
+    <string name="cal_next_month">Next month</string>
+    <plurals name="cal_month_active">
+        <item quantity="one">%d active task this month</item>
+        <item quantity="other">%d active tasks this month</item>
+    </plurals>
+    <string name="cal_this_month">Go to this month</string>
+    <string name="cal_legend_busy">Busy week (%d+)</string>
+    <string name="cal_legend_very_busy">Very busy (%d+)</string>
+    <string name="cal_no_deadlines">No deadlines on this date</string>
+
+    <!-- Archive & trash -->
+    <string name="archive_title">Archive &amp; trash</string>
+    <string name="archive_tab">Archive (%d)</string>
+    <string name="trash_tab">Trash (%d)</string>
+    <string name="archive_info">Completed tasks are archived automatically after %d days.</string>
+    <string name="trash_info">Tasks in trash are permanently deleted after %d days.</string>
+    <string name="archive_empty">Archive is empty</string>
+    <string name="trash_empty">Trash is empty</string>
+    <string name="archive_done_ago">Done %s</string>
+    <string name="archive_done">Done</string>
+    <string name="trash_deleted_ago">Deleted %s</string>
+    <plurals name="trash_days_left">
+        <item quantity="one">%d day left</item>
+        <item quantity="other">%d days left</item>
+    </plurals>
+    <string name="trash_deleted_today">permanently deleted today</string>
+    <string name="unarchive">Unarchive</string>
+    <string name="discard">Discard</string>
+    <string name="restore">Restore</string>
+    <string name="delete_forever">Delete permanently</string>
+    <string name="empty_trash">Empty trash</string>
+    <string name="empty_confirm">Empty</string>
+    <string name="dialog_forever_title">Delete permanently?</string>
+    <string name="dialog_forever_text">\"%s\" can\'t be recovered.</string>
+    <string name="dialog_empty_title">Empty trash?</string>
+    <plurals name="dialog_empty_text">
+        <item quantity="one">%d task will be permanently deleted and can\'t be recovered.</item>
+        <item quantity="other">%d tasks will be permanently deleted and can\'t be recovered.</item>
+    </plurals>
+    <plurals name="ago_days">
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+    <plurals name="ago_hours">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <string name="ago_just_now">just now</string>
+
+    <!-- Share -->
+    <string name="share_deadline">Deadline: %s</string>
+    <string name="share_attachments">Attachments:</string>
+    <string name="share_footer">— sent from TugasKu</string>
+    <string name="share_chooser">Share task</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="theme_system">Follow system</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="settings_time_format">Time format</string>
+    <string name="time_24h">24-hour</string>
+    <string name="time_12h">12-hour</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_snooze">Snooze duration</string>
+    <string name="settings_default_reminders">Default reminders for new tasks</string>
+    <string name="settings_default_reminders_desc">Pre-selected when you create a task. You can still change it for each task.</string>
+    <string name="settings_tasks">Tasks</string>
+    <string name="settings_archive_after">Auto-archive completed tasks after</string>
+    <string name="settings_never">Never</string>
+    <string name="settings_week_start">First day of the week</string>
+    <string name="week_monday">Monday</string>
+    <string name="week_sunday">Sunday</string>
+    <string name="duration_15m">15 min</string>
+    <string name="duration_30m">30 min</string>
+    <string name="duration_1h">1 hour</string>
+    <string name="duration_3h">3 hours</string>
+    <plurals name="days_count">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <string name="archive_info_never">Completed tasks are not archived automatically.</string>
+
+    <!-- About (Settings card) -->
+    <string name="settings_about">About</string>
+    <string name="settings_about_desc">App information and developer contact.</string>
+    <string name="settings_about_open">View About</string>
+
+    <!-- About screen -->
+    <string name="about_tagline">Organize your tasks, manage your deadlines.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_developed_by">Developed by</string>
+    <string name="about_role">Independent Developer</string>
+    <string name="about_description">TugasKu is made to help you manage tasks and deadlines more easily.</string>
+    <string name="about_contact">Contact developer</string>
+    <string name="about_send_email">Send email</string>
+    <string name="about_email_subject">Feedback for TugasKu</string>
+    <string name="about_copyright">© 2026 Gewol</string>
+
+    <!-- Priority, subtasks, course colors -->
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="editor_priority_heading">Priority</string>
+    <string name="editor_subtasks_heading">Subtasks</string>
+    <string name="editor_subtask_hint">Add a subtask</string>
+    <string name="subtask_progress">%1$d/%2$d</string>
+    <string name="editor_subject_color">Course color</string>
+    <string name="cd_color_option">Color %1$d</string>
+    <string name="cd_repeat_weekly">Repeats every week</string>
+    <string name="sort_by_deadline">Sort: deadline</string>
+    <string name="sort_by_priority">Sort: priority</string>
+    <string name="share_priority">Priority: %s</string>
+    <string name="share_subtasks">Subtasks:</string>
+
+    <!-- Backup and restore -->
+    <string name="settings_data">Data</string>
+    <string name="settings_backup_desc">Save all tasks, photos and settings to a JSON file. Use it to move to a new phone or to keep a safe copy.</string>
+    <string name="backup_export">Back up data</string>
+    <string name="backup_import">Restore data</string>
+    <string name="restore_dialog_title">Restore data?</string>
+    <string name="restore_dialog_text">All current tasks and settings will be replaced with the contents of the backup file. This can\'t be undone.</string>
+    <string name="restore_confirm">Choose file</string>
+    <string name="backup_saved">Backup saved</string>
+    <string name="backup_failed">Backup failed</string>
+    <plurals name="restore_success">
+        <item quantity="one">%d task restored</item>
+        <item quantity="other">%d tasks restored</item>
+    </plurals>
+    <string name="restore_invalid">This is not a valid TugasKu backup file</string>
+    <string name="restore_too_new">This backup was made with a newer version of the app</string>
+
+    <!-- Theme colors -->
+    <string name="settings_theme_color">Theme color</string>
+    <string name="theme_color_purple">Purple</string>
+    <string name="theme_color_blue">Blue</string>
+    <string name="theme_color_teal">Teal</string>
+    <string name="theme_color_green">Green</string>
+    <string name="theme_color_orange">Orange</string>
+    <string name="theme_color_pink">Pink</string>
+    <string name="theme_color_red">Red</string>
+    <string name="theme_color_amber">Yellow</string>
+    <string name="theme_color_sky">Sky blue</string>
+    <string name="theme_color_violet">Violet</string>
+    <string name="theme_color_brown">Brown</string>
+    <string name="theme_color_slate">Slate</string>
+
+    <!-- Motivational phrases shown under the app title (typewriter effect) -->
+    <string-array name="taglines">
+        <item>Organize your tasks, never be late</item>
+        <item>One task done, one less thing to worry about</item>
+        <item>Start small, what matters is that you start</item>
+        <item>Deadlines are easy when you start early</item>
+        <item>Pick the one thing that matters most today</item>
+        <item>Do it now, relax later</item>
+        <item>Slow progress is still progress, keep going</item>
+        <item>A short break is fine, giving up is not</item>
+        <item>Break big tasks into small steps</item>
+        <item>You have come this far, keep going</item>
+        <item>Write it down now before you forget</item>
+        <item>Focus for 25 minutes, the rest will follow</item>
+        <item>A tidy task list, a calm mind</item>
+    </string-array>
+
+    <!-- Statistics -->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_empty">Add some tasks and your statistics will appear here</string>
+    <string name="stats_on_time">On time</string>
+    <string name="stats_weekly_title">Completed per week</string>
+    <string name="stats_this_week">This week: %1$d</string>
+    <string name="stats_week_cd">Week of %1$s: %2$d completed</string>
+    <string name="stats_ontime_title">On-time rate</string>
+    <string name="stats_ontime_detail">%1$d of %2$d tasks finished before the deadline</string>
+    <string name="stats_ontime_none">No completed tasks yet</string>
+    <plurals name="stats_old_data">
+        <item quantity="one">%d older task is not counted because its completion time was not recorded</item>
+        <item quantity="other">%d older tasks are not counted because their completion time was not recorded</item>
+    </plurals>
+    <string name="stats_subject_title">Tasks per course</string>
+    <string name="stats_subject_hint">The solid part is completed</string>
+    <string name="stats_subject_count">%1$d/%2$d</string>
+
+    <!-- Pembaruan aplikasi -->
+    <string name="update_title">Update available</string>
+    <string name="update_message">Version %1$s is available (you have %2$s).</string>
+    <string name="update_now">Update</string>
+    <string name="update_later">Later</string>
+    <string name="update_downloading">Downloading update…</string>
+    <string name="update_failed">Download failed. Check your connection and try again.</string>
+    <string name="update_permission_hint">Allow installing from TugasKu, go back, then tap Update again.</string>
+    <string name="update_check">Check for updates</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_latest">You are on the latest version.</string>
+    <string name="update_check_failed">Couldn\'t check for updates. Check your connection.</string>
+</resources>
