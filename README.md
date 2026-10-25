@@ -4,17 +4,14 @@
 
 ## Tangkapan layar
 
-| Beranda | Tambah tugas |
-|---|---|
-| ![Beranda TugasKu](screenshots/Screenshot_20261025_120011.png) | ![Tambah tugas](screenshots/Screenshot_20261025_120051.png) |
-
-| Notifikasi | Pengaturan |
-|---|---|
-| ![Notifikasi](screenshots/Screenshot_20261025_120132.png) | ![Pengaturan](screenshots/Screenshot_20261025_120221.png) |
-
-| Kalender | Tentang aplikasi |
-|---|---|
-| ![Kalender](screenshots/Screenshot_20261025_120206.png) | ![Tentang aplikasi](screenshots/Screenshot_20261025_120337.png) |
+<p align="center">
+  <img src="screenshots/Screenshot_20261025_120011.png" width="180" alt="Beranda TugasKu">
+  <img src="screenshots/Screenshot_20261025_120051.png" width="180" alt="Tambah tugas">
+  <img src="screenshots/Screenshot_20261025_120132.png" width="180" alt="Notifikasi">
+  <img src="screenshots/Screenshot_20261025_120221.png" width="180" alt="Pengaturan">
+  <img src="screenshots/Screenshot_20261025_120206.png" width="180" alt="Kalender">
+  <img src="screenshots/Screenshot_20261025_120337.png" width="180" alt="Tentang aplikasi">
+</p>
 
 ## Fitur
 
