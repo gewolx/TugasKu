@@ -36,12 +36,6 @@ class ReminderReceiver : BroadcastReceiver() {
 
     @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
-        if (Build.VERSION.SDK_INT >= 33 &&
-            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
-            != PackageManager.PERMISSION_GRANTED
-        ) return
-
-        NotificationHelper.ensureChannel(context)
         // Context dengan bahasa pilihan pengguna, khusus untuk mengambil teks.
         val ctx = LocaleHelper.wrap(context)
 
@@ -56,6 +50,16 @@ class ReminderReceiver : BroadcastReceiver() {
             if (subject.isNotBlank()) append("\n").append(subject)
             if (lecturer.isNotBlank()) append(" • ").append(lecturer)
         }
+
+        // Catat ke riwayat notifikasi (juga saat izin notifikasi ditolak, supaya tetap terlihat di aplikasi).
+        NotificationHistory.add(context, NOTIF_DEADLINE, title, text, id)
+
+        if (Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+            != PackageManager.PERMISSION_GRANTED
+        ) return
+
+        NotificationHelper.ensureChannel(context)
 
         val open = PendingIntent.getActivity(
             context,

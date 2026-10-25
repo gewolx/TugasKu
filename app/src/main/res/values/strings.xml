@@ -326,4 +326,23 @@
     <string name="update_checking">Checking…</string>
     <string name="update_latest">You are on the latest version.</string>
     <string name="update_check_failed">Couldn\'t check for updates. Check your connection.</string>
+    <!-- Notification history -->
+    <string name="nh_title">Notifications</string>
+    <string name="nh_filter_all">All</string>
+    <string name="nh_filter_deadline">Deadlines</string>
+    <string name="nh_filter_pending">Not done</string>
+    <string name="nh_filter_update">Updates</string>
+    <string name="nh_empty">No notifications yet. Deadline reminders and app updates will show up here.</string>
+    <string name="nh_empty_filter">Nothing in this filter.</string>
+    <string name="nh_mark_all_read">Mark all as read</string>
+    <string name="nh_clear_all">Clear all</string>
+    <string name="nh_clear_title">Clear history?</string>
+    <string name="nh_clear_text">All notification history will be deleted. Your tasks won\'t be affected.</string>
+    <string name="nh_clear_confirm">Clear</string>
+    <string name="nh_remove">Remove</string>
+    <string name="nh_status_pending">Not done yet</string>
+    <string name="nh_status_done">Done</string>
+    <string name="nh_status_gone">Task deleted</string>
+    <string name="nh_update_title">Update available</string>
+    <string name="nh_update_message">Version %1$s is ready. Tap to update.</string>
 </resources>

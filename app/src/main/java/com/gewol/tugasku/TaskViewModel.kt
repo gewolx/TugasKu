@@ -65,6 +65,11 @@ class TaskViewModel(app: Application) : AndroidViewModel(app) {
     private val _subjectColors = mutableStateOf(store.subjectColors)
     val subjectColors: Map<String, Int> get() = _subjectColors.value
 
+    /** Riwayat notifikasi (terbaru di atas). */
+    private val _notifications = mutableStateOf(NotificationHistory.load(app))
+    val notifications: List<NotifRecord> get() = _notifications.value
+    val unreadNotifCount: Int get() = _notifications.value.count { !it.read }
+
     init {
         all = maintain(store.load())
         sweepOrphanPhotos()
@@ -134,7 +139,33 @@ class TaskViewModel(app: Application) : AndroidViewModel(app) {
     /** Muat ulang dari penyimpanan (mis. setelah tugas diubah lewat tombol notifikasi). */
     fun reload() {
         all = maintain(store.load())
+        reloadNotifications()
         refreshWidget()
+    }
+
+    /** Muat ulang riwayat notifikasi (setelah ada catatan baru dari receiver / pengecekan pembaruan). */
+    fun reloadNotifications() {
+        _notifications.value = NotificationHistory.load(ctx)
+    }
+
+    fun markNotificationRead(id: Long) {
+        NotificationHistory.markRead(ctx, id)
+        reloadNotifications()
+    }
+
+    fun markAllNotificationsRead() {
+        NotificationHistory.markAllRead(ctx)
+        reloadNotifications()
+    }
+
+    fun deleteNotification(id: Long) {
+        NotificationHistory.delete(ctx, id)
+        reloadNotifications()
+    }
+
+    fun clearNotifications() {
+        NotificationHistory.clear(ctx)
+        reloadNotifications()
     }
 
     fun save(task: Task) {

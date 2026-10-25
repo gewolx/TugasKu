@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.HourglassTop
 import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Repeat
 import androidx.compose.material.icons.outlined.Search
@@ -68,6 +69,8 @@ fun TaskListScreen(
     onOpenCalendar: () -> Unit,
     onOpenSettings: () -> Unit,
     onOpenStats: () -> Unit,
+    unreadNotifCount: Int,
+    onOpenNotifications: () -> Unit,
     archiveCount: Int,
     onOpenArchive: () -> Unit,
     onAdd: () -> Unit,
@@ -198,6 +201,12 @@ fun TaskListScreen(
                         )
                         // Digeser 4dp ke kanan agar tepi lingkaran sejajar dengan tepi kartu di bawahnya.
                         Row(modifier = Modifier.offset(x = 4.dp)) {
+                            HeaderButton(
+                                Icons.Outlined.Notifications,
+                                stringResource(R.string.nh_title),
+                                onOpenNotifications,
+                                badgeCount = unreadNotifCount
+                            )
                             HeaderButton(Icons.Outlined.BarChart, stringResource(R.string.stats_title), onOpenStats)
                             HeaderButton(Icons.Outlined.CalendarMonth, stringResource(R.string.calendar), onOpenCalendar)
                             HeaderButton(Icons.Outlined.Settings, stringResource(R.string.settings_title), onOpenSettings)
@@ -368,29 +377,51 @@ fun TaskListScreen(
 private fun HeaderButton(
     icon: ImageVector,
     contentDescription: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    badgeCount: Int = 0
 ) {
-    Box(
-        modifier = Modifier
-            .size(44.dp)
-            .clip(CircleShape)
-            .clickable(role = Role.Button, onClick = onClick),
-        contentAlignment = Alignment.Center
-    ) {
+    Box(modifier = Modifier.size(44.dp)) {
         Box(
             modifier = Modifier
-                .size(36.dp)
+                .fillMaxSize()
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surface)
-                .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f), CircleShape),
+                .clickable(role = Role.Button, onClick = onClick),
             contentAlignment = Alignment.Center
         ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = contentDescription,
-                tint = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.size(19.dp)
-            )
+            Box(
+                modifier = Modifier
+                    .size(36.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surface)
+                    .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = contentDescription,
+                    tint = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.size(19.dp)
+                )
+            }
+        }
+        // Badge angka belum dibaca (maksimal tampil "9+")
+        if (badgeCount > 0) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .defaultMinSize(minWidth = 16.dp, minHeight = 16.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.error)
+                    .padding(horizontal = 4.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    if (badgeCount > 9) "9+" else badgeCount.toString(),
+                    color = MaterialTheme.colorScheme.onError,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
     }
 }

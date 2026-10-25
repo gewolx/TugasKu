@@ -35,6 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gewol.tugasku.ui.AboutScreen
 import com.gewol.tugasku.ui.ArchiveScreen
 import com.gewol.tugasku.ui.CalendarScreen
+import com.gewol.tugasku.ui.NotificationScreen
 import com.gewol.tugasku.ui.SettingsScreen
 import com.gewol.tugasku.ui.StatsScreen
 import com.gewol.tugasku.ui.TaskEditorScreen
@@ -158,6 +159,14 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                 result.onSuccess { info ->
                     if (info != null) {
                         updateInfo = info
+                        // Catat ke riwayat notifikasi (sekali per versi).
+                        NotificationHistory.recordUpdate(
+                            context,
+                            info.versionCode,
+                            context.getString(R.string.nh_update_title),
+                            context.getString(R.string.nh_update_message, info.versionName)
+                        )
+                        vm.reloadNotifications()
                     } else if (manual) {
                         Toast.makeText(context, context.getString(R.string.update_latest), Toast.LENGTH_SHORT).show()
                     }
@@ -202,6 +211,9 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
     var showStats by rememberSaveable {
         mutableStateOf(false)
     }
+    var showNotif by rememberSaveable {
+        mutableStateOf(false)
+    }
 
     // Posisi scroll Pengaturan disimpan di sini agar tidak kembali ke atas setelah dari halaman Tentang
     val settingsScroll = rememberScrollState()
@@ -219,6 +231,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
             // 4 = pengaturan
             // 5 = tentang aplikasi
             // 6 = statistik
+            // 7 = notifikasi
             val screen = when {
                 editorId != NONE -> 2
                 showAbout -> 5
@@ -226,6 +239,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                 showArchive -> 3
                 showSettings -> 4
                 showStats -> 6
+                showNotif -> 7
                 else -> 0
             }
 
@@ -238,6 +252,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                     3 -> showArchive = false
                     4 -> showSettings = false
                     6 -> showStats = false
+                    7 -> showNotif = false
                 }
             }
 
@@ -392,6 +407,28 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                         )
                     }
 
+                    // Riwayat notifikasi
+                    7 -> {
+                        NotificationScreen(
+                            records = vm.notifications,
+                            tasks = vm.tasks,
+                            now = now,
+                            onBack = { showNotif = false },
+                            onOpen = { record ->
+                                vm.markNotificationRead(record.id)
+                                when (record.type) {
+                                    NOTIF_DEADLINE ->
+                                        // Buka editor bila tugasnya masih ada
+                                        if (vm.tasks.any { it.id == record.taskId }) editorId = record.taskId
+                                    NOTIF_UPDATE -> checkForUpdate(true)
+                                }
+                            },
+                            onMarkAllRead = vm::markAllNotificationsRead,
+                            onDelete = vm::deleteNotification,
+                            onClearAll = vm::clearNotifications
+                        )
+                    }
+
                     // Daftar tugas utama
                     else -> {
                         TaskListScreen(
@@ -406,6 +443,10 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                             },
                             onOpenStats = {
                                 showStats = true
+                            },
+                            unreadNotifCount = vm.unreadNotifCount,
+                            onOpenNotifications = {
+                                showNotif = true
                             },
                             archiveCount = vm.archived.size + vm.trash.size,
                             onOpenArchive = {

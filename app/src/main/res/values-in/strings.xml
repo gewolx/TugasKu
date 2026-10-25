@@ -307,4 +307,23 @@
     <string name="update_checking">Memeriksa…</string>
     <string name="update_latest">Kamu sudah memakai versi terbaru.</string>
     <string name="update_check_failed">Gagal memeriksa pembaruan. Periksa koneksi internet.</string>
+    <!-- Riwayat notifikasi -->
+    <string name="nh_title">Notifikasi</string>
+    <string name="nh_filter_all">Semua</string>
+    <string name="nh_filter_deadline">Deadline</string>
+    <string name="nh_filter_pending">Belum dikerjakan</string>
+    <string name="nh_filter_update">Pembaruan</string>
+    <string name="nh_empty">Belum ada notifikasi. Pengingat deadline dan pembaruan aplikasi akan muncul di sini.</string>
+    <string name="nh_empty_filter">Tidak ada notifikasi di filter ini.</string>
+    <string name="nh_mark_all_read">Tandai semua dibaca</string>
+    <string name="nh_clear_all">Hapus semua</string>
+    <string name="nh_clear_title">Hapus riwayat?</string>
+    <string name="nh_clear_text">Semua riwayat notifikasi akan dihapus. Tugasmu tidak terpengaruh.</string>
+    <string name="nh_clear_confirm">Hapus</string>
+    <string name="nh_remove">Hilangkan</string>
+    <string name="nh_status_pending">Belum dikerjakan</string>
+    <string name="nh_status_done">Selesai</string>
+    <string name="nh_status_gone">Tugas dihapus</string>
+    <string name="nh_update_title">Pembaruan tersedia</string>
+    <string name="nh_update_message">Versi %1$s siap dipasang. Ketuk untuk memperbarui.</string>
 </resources>
