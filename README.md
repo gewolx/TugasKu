@@ -2,15 +2,17 @@
 
 **TugasKu** adalah aplikasi Android untuk membantu pelajar dan mahasiswa mencatat tugas, memantau tenggat, dan menerima pengingat tepat waktu.
 
-## Tangkapan layar
+## Tampilan aplikasi
 
 <p align="center">
-  <img src="screenshots/Screenshot_20261025_120011.png" width="180" alt="Beranda TugasKu">
-  <img src="screenshots/Screenshot_20261025_120051.png" width="180" alt="Tambah tugas">
-  <img src="screenshots/Screenshot_20261025_120132.png" width="180" alt="Notifikasi">
-  <img src="screenshots/Screenshot_20261025_120221.png" width="180" alt="Pengaturan">
-  <img src="screenshots/Screenshot_20261025_120206.png" width="180" alt="Kalender">
-  <img src="screenshots/Screenshot_20261025_120337.png" width="180" alt="Tentang aplikasi">
+  <img src="screenshots/Screenshot_20261025_120011.png" width="190" alt="Beranda TugasKu">
+  <img src="screenshots/Screenshot_20261025_120051.png" width="190" alt="Form tambah tugas">
+  <img src="screenshots/Screenshot_20261025_120221.png" width="190" alt="Pengaturan TugasKu">
+  <img src="screenshots/Screenshot_20261025_120337.png" width="190" alt="Tentang TugasKu">
+</p>
+
+<p align="center">
+  Catat tugas, atur tenggat, sesuaikan pengingat, dan kelola tampilan dalam satu aplikasi.
 </p>
 
 ## Fitur
