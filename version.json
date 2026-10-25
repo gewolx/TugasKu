@@ -1,6 +1,6 @@
 {
-  "versionCode": 1,
-  "versionName": "1.0",
-  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.0/TugasKu.apk",
-  "notes": "Rilis pertama"
+  "versionCode": 2,
+  "versionName": "1.1",
+  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.1/TugasKu.apk",
+  "notes": "Menambahkan fitur notifikasi"
 }
