@@ -1,8 +1,8 @@
 {
   "versionCode": 3,
   "versionName": "1.2",
-  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.1/TugasKu.apk",
-  "notes_id": "Riwayat notifikasi\nRingkasan harian\nBagikan teks dari WhatsApp\nHalaman Tentang diperbarui",
-  "notes_en": "Notification history\nDaily summary\nShare text from WhatsApp\nUpdated About page",
-  "notes": "Riwayat notifikasi\nRingkasan harian\nBagikan teks dari WhatsApp\nHalaman Tentang diperbarui"
+  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.2/TugasKu.apk",
+  "notes_id": "Riwayat notifikasi dengan badge di header\nRingkasan harian tiap pagi\nBagikan teks dari WhatsApp ke TugasKu\nHalaman Tentang: laporkan masalah dan status pembaruan",
+  "notes_en": "Notification history with a header badge\nDaily summary every morning\nShare text from WhatsApp to TugasKu\nAbout page: report a problem and update status",
+  "notes": "Riwayat notifikasi dengan badge di header\nRingkasan harian tiap pagi\nBagikan teks dari WhatsApp ke TugasKu\nHalaman Tentang: laporkan masalah dan status pembaruan"
 }
