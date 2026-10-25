@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Lihat tampilan TugasKu, aplikasi Android untuk mengatur tugas dan tenggat."
+  <title>TugasKu — Pratinjau aplikasi</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b1220; --panel:#121c2d; --line:#263650; --text:#edf3ff; --muted:#a7b6d0; --blue:#78aaff; }
+    * { box-sizing:border-box }
+    body { margin:0; background:radial-gradient(ellipse at 50% -20%,#1d3c70 0,transparent 48%),var(--bg); color:var(--text); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif }
+    main { max-width:1100px; margin:auto; padding:56px 24px 64px }
+    header { text-align:center; max-width:720px; margin:0 auto 34px }
+    .eyebrow { color:var(--blue); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem }
+    h1 { font-size:clamp(2.4rem,7vw,4.6rem); line-height:1.05; margin:12px 0 }
+    header p { color:var(--muted); font-size:1.1rem; margin:0 auto 22px }
+    .cta { display:inline-block; color:#09162c; background:var(--blue); padding:10px 18px; border-radius:999px; font-weight:750; text-decoration:none }
+    .gallery { display:grid; grid-template-columns:52px minmax(0,1fr) 52px; align-items:center; gap:18px }
+    .nav { width:52px; height:52px; border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:50%; font-size:1.5rem; cursor:pointer }
+    .nav:hover { border-color:var(--blue); color:var(--blue) }
+    .viewport { overflow:hidden; border:1px solid var(--line); border-radius:28px; background:linear-gradient(145deg,#121c2d,#0e1726); padding:26px 24px 20px }
+    .track { display:flex; transition:transform .35s ease; touch-action:pan-y; will-change:transform }
+    .slide { flex:0 0 100%; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center }
+    .slide img { display:block; height:min(68vh,720px); max-width:100%; width:auto; object-fit:contain; border-radius:22px; box-shadow:0 20px 55px #0008 }
+    .caption { margin:16px 0 0; font-size:1.1rem; font-weight:700 }
+    .dots { display:flex; justify-content:center; gap:9px; margin-top:20px }
+    .dot { width:9px; height:9px; border:0; border-radius:50%; padding:0; background:#50617b; cursor:pointer }
+    .dot[aria-current="true"] { width:26px; border-radius:10px; background:var(--blue) }
+    .hint { text-align:center; color:var(--muted); font-size:.88rem; margin:14px 0 0 }
+    footer { margin-top:32px; text-align:center; color:var(--muted); font-size:.92rem }
+    footer a { color:var(--blue) }
+    @media(max-width:600px) { main{padding:36px 14px 42px}.gallery{grid-template-columns:38px minmax(0,1fr) 38px;gap:8px}.nav{width:38px;height:38px;font-size:1.2rem}.viewport{padding:16px 10px 14px;border-radius:22px}.slide img{height:62vh;max-height:620px;border-radius:16px} }
+    @media(prefers-reduced-motion:reduce) { .track{transition:none} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Aplikasi pengelola tugas Android</div>
+    <h1>Tugas<span style="color:var(--blue)">Ku</span></h1>
+    <p>Catat tugas, atur tenggat, dan sesuaikan pengingat dalam satu aplikasi. Geser untuk melihat tampilannya.</p>
+    <a class="cta" href="https://github.com/gewolx/TugasKu/releases">Unduh APK terbaru</a>
+  </header>
+  <section class="gallery" aria-label="Galeri tangkapan layar TugasKu">
+    <button class="nav" id="prev" aria-label="Gambar sebelumnya">‹</button>
+    <div class="viewport" id="viewport" aria-live="polite">
+      <div class="track" id="track">
+        <article class="slide"><img src="screenshots/Screenshot_20261025_120011.png" alt="Beranda TugasKu dengan ringkasan tugas dan pencarian"/><p class="caption">Beranda — lihat ringkasan tugas dengan cepat</p></article>
+        <article class="slide"><img src="screenshots/Screenshot_20261025_120051.png" alt="Form untuk menambahkan tugas, tenggat, prioritas, dan sub tugas"/><p class="caption">Tambah tugas — catat detail dan tenggat</p></article>
+        <article class="slide"><img src="screenshots/Screenshot_20261025_120132.png" alt="Halaman notifikasi TugasKu"/><p class="caption">Notifikasi — pantau pengingat dan pembaruan</p></article>
+        <article class="slide"><img src="screenshots/Screenshot_20261025_120206.png" alt="Kalender bulanan TugasKu"/><p class="caption">Kalender — tinjau tenggat berdasarkan tanggal</p></article>
+        <article class="slide"><img src="screenshots/Screenshot_20261025_120221.png" alt="Pengaturan bahasa, tema, warna, waktu, dan notifikasi"/><p class="caption">Pengaturan — sesuaikan tampilan dan pengingat</p></article>
+        <article class="slide"><img src="screenshots/Screenshot_20261025_120337.png" alt="Halaman Tentang aplikasi TugasKu dan kontak developer"/><p class="caption">Tentang TugasKu — informasi dan kontak developer</p></article>
+      </div>
+      <div class="dots" id="dots" aria-label="Pilih gambar"></div>
+    </div>
+    <button class="nav" id="next" aria-label="Gambar berikutnya">›</button>
+  </section>
+  <p class="hint">Gunakan tombol, titik navigasi, atau geser gambar di layar sentuh.</p>
+  <footer>Proyek sumber terbuka di <a href="https://github.com/gewolx/TugasKu">GitHub</a> · Saran dan bug: <a href="mailto:gewol.dev@gmail.com">gewol.dev@gmail.com</a></footer>
+</main>
+<script>
+  const track = document.querySelector('#track');
+  const slides = [...document.querySelectorAll('.slide')];
+  const dots = document.querySelector('#dots');
+  let index = 0, startX = 0;
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot'; dot.setAttribute('aria-label', `Tampilkan gambar ${i + 1}`);
+    dot.addEventListener('click', () => show(i)); dots.append(dot);
+  });
+  function show(next) {
+    index = (next + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    [...dots.children].forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+  }
+  document.querySelector('#prev').addEventListener('click', () => show(index - 1));
+  document.querySelector('#next').addEventListener('click', () => show(index + 1));
+  track.addEventListener('touchstart', e => { startX = e.changedTouches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - startX; if (Math.abs(dx) > 45) show(index + (dx < 0 ? 1 : -1)); }, {passive:true});
+  document.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(index + 1); if (e.key === 'ArrowLeft') show(index - 1); });
+  show(0);
+</script>
+</body>
+</html>
