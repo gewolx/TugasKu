@@ -1,6 +1,6 @@
 # TugasKu
 
-**TugasKu** adalah aplikasi Android untuk membantu pelajar dan mahasiswa mengelola tugas, memantau tenggat, dan menerima pengingat tepat waktu.
+**TugasKu** adalah aplikasi Android untuk membantu pelajar dan mahasiswa mencatat tugas, memantau tenggat, dan menerima pengingat tepat waktu.
 
 ## Fitur
 
@@ -18,6 +18,10 @@ Unduh APK terbaru dari halaman [Releases](https://github.com/gewolx/TugasKu/rele
 ## Persyaratan
 
 - Android 9 (API level 28) atau lebih baru
+
+## Saran dan laporan bug
+
+Punya saran atau menemukan bug? Kirim email ke [gewol.dev@gmail.com](mailto:gewol.dev@gmail.com). Jika memungkinkan, sertakan penjelasan singkat dan langkah-langkah untuk mengulangi masalahnya.
 
 ## Teknologi
 
