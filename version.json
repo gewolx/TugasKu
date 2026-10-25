@@ -1,8 +1,8 @@
 {
-  "versionCode": 3,
-  "versionName": "1.2",
-  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.2/TugasKu.apk",
-  "notes_id": "Riwayat notifikasi dengan badge di header\nRingkasan harian tiap pagi\nBagikan teks dari WhatsApp ke TugasKu\nHalaman Tentang: laporkan masalah dan status pembaruan",
-  "notes_en": "Notification history with a header badge\nDaily summary every morning\nShare text from WhatsApp to TugasKu\nAbout page: report a problem and update status",
-  "notes": "Riwayat notifikasi dengan badge di header\nRingkasan harian tiap pagi\nBagikan teks dari WhatsApp ke TugasKu\nHalaman Tentang: laporkan masalah dan status pembaruan"
+  "versionCode": 4,
+  "versionName": "1.5",
+  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.5/TugasKu.apk",
+  "notes_id": "Tag untuk melabeli tugas (kelompok, ujian, organisasi) dan filter berdasarkan tag\nTugas kelompok: daftar anggota dan catatan pembagian tugas\nTemplate tugas dengan subtugas bawaan, dikelola di Pengaturan\nPencarian kini mencakup tag dan nama anggota\nCadangan data menyertakan tag, anggota, dan template\nPerbaikan bug dan warna tombol",
+  "notes_en": "Tags to label tasks (group, exam, organization) and filter by tag\nGroup tasks: member list and task division notes\nTask templates with preset subtasks, managed in Settings\nSearch now covers tags and member names\nBackups now include tags, members, and templates\nBug fixes and button color fixes",
+  "notes": "Tag untuk melabeli tugas (kelompok, ujian, organisasi) dan filter berdasarkan tag\nTugas kelompok: daftar anggota dan catatan pembagian tugas\nTemplate tugas dengan subtugas bawaan, dikelola di Pengaturan\nPencarian kini mencakup tag dan nama anggota\nCadangan data menyertakan tag, anggota, dan template\nPerbaikan bug dan warna tombol"
 }
