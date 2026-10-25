@@ -1,17 +1,25 @@
-# TugasKu – Aplikasi Pengingat Tugas (Android, Kotlin + Jetpack Compose)
+# TugasKu
 
-Fitur:
-- Catatan tugas, tenggat (tanggal + jam), nama dosen/guru, mata pelajaran/mata kuliah
-- Notifikasi pengingat (tepat waktu / 1 jam / 3 jam / 1 hari / 3 hari sebelum tenggat)
-- Pengingat dijadwalkan ulang otomatis setelah HP restart
-- Ringkasan (aktif, mendesak, terlambat, selesai) + filter
-- Tema terang & gelap (ikuti sistem, atau ganti manual lewat tombol ☀️/🌙/🌓)
-- Data tersimpan lokal di perangkat
-- minSdk 28 (Android 9) – targetSdk 34
+**TugasKu** adalah aplikasi Android untuk membantu pelajar dan mahasiswa mengelola tugas, memantau tenggat, dan menerima pengingat tepat waktu.
 
-Cara membuka di Android Studio:
-1. Ekstrak ZIP, lalu File > Open > pilih folder `TugasKu`.
-2. Tunggu Gradle Sync selesai (butuh internet pertama kali).
-3. Jalankan (Run ▶) ke emulator/HP. Untuk APK: Build > Build Bundle(s) / APK(s) > Build APK(s).
+## Fitur
 
-Catatan: jika Android Studio menawarkan "Upgrade Gradle/AGP", boleh ditolak atau diterima.
+- Mencatat tugas, mata pelajaran, nama dosen atau guru, dan tenggat
+- Mengatur notifikasi pengingat sebelum tenggat
+- Menjadwalkan ulang pengingat setelah perangkat dimulai ulang
+- Melihat ringkasan tugas aktif, mendesak, terlambat, dan selesai
+- Memilih tema terang atau gelap
+- Menyimpan data secara lokal di perangkat
+
+## Unduh dan instal
+
+Unduh APK terbaru dari halaman [Releases](https://github.com/gewolx/TugasKu/releases). Setelah unduhan selesai, buka file APK di perangkat Android dan ikuti petunjuk pemasangan. Jika diminta, izinkan pemasangan aplikasi dari sumber tersebut.
+
+## Persyaratan
+
+- Android 9 (API level 28) atau lebih baru
+
+## Teknologi
+
+- Kotlin
+- Jetpack Compose
