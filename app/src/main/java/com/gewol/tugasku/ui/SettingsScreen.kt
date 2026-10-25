@@ -10,6 +10,7 @@ import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Palette
+import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.foundation.BorderStroke
@@ -37,6 +38,8 @@ import com.gewol.tugasku.LocaleHelper
 import com.gewol.tugasku.R
 import com.gewol.tugasku.REMIND_OPTIONS
 import com.gewol.tugasku.SNOOZE_OPTIONS
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 /** Pilihan jeda arsip otomatis (hari). 0 = tidak pernah. */
 private val ARCHIVE_OPTIONS = listOf(3, 7, 14, 0)
@@ -61,6 +64,10 @@ fun SettingsScreen(
     onArchiveDays: (Int) -> Unit,
     weekStartsSunday: Boolean,
     onWeekStartsSunday: (Boolean) -> Unit,
+    digestEnabled: Boolean,
+    onDigestEnabled: (Boolean) -> Unit,
+    digestMinutes: Int,
+    onDigestMinutes: (Int) -> Unit,
     onBackup: () -> Unit,
     onRestore: () -> Unit,
     onAbout: () -> Unit,
@@ -69,6 +76,28 @@ fun SettingsScreen(
     val scheme = MaterialTheme.colorScheme
     val context = LocalContext.current
     var confirmRestore by remember { mutableStateOf(false) }
+    var showDigestTime by remember { mutableStateOf(false) }
+
+    if (showDigestTime) {
+        val state = rememberTimePickerState(
+            initialHour = digestMinutes / 60,
+            initialMinute = digestMinutes % 60,
+            is24Hour = use24Hour
+        )
+        AlertDialog(
+            onDismissRequest = { showDigestTime = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    onDigestMinutes(state.hour * 60 + state.minute)
+                    showDigestTime = false
+                }) { Text(stringResource(R.string.ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDigestTime = false }) { Text(stringResource(R.string.cancel)) }
+            },
+            text = { TimePicker(state = state) }
+        )
+    }
 
     if (confirmRestore) {
         AlertDialog(
@@ -196,6 +225,29 @@ fun SettingsScreen(
                             label = { Text(stringResource(labelRes)) },
                             shape = RoundedCornerShape(50)
                         )
+                    }
+                }
+            }
+
+            // Ringkasan harian
+            SettingsSection(Icons.Outlined.Schedule, stringResource(R.string.digest_setting_title)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        stringResource(R.string.digest_setting_desc),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = scheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Spacer(Modifier.width(12.dp))
+                    Switch(checked = digestEnabled, onCheckedChange = onDigestEnabled)
+                }
+                if (digestEnabled) {
+                    val timeText = LocalTime.of(digestMinutes / 60, digestMinutes % 60)
+                        .format(DateTimeFormatter.ofPattern(if (use24Hour) "HH:mm" else "h:mm a"))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        FieldLabel(stringResource(R.string.digest_setting_time))
+                        Spacer(Modifier.weight(1f))
+                        OutlinedButton(onClick = { showDigestTime = true }) { Text(timeText) }
                     }
                 }
             }

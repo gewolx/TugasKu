@@ -17,7 +17,8 @@ import java.net.URL
  * Cek pembaruan lewat file version.json di GitHub, unduh APK, lalu buka pemasang Android.
  *
  * Format version.json:
- * {"versionCode": 2, "versionName": "1.1", "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.1/TugasKu.apk", "notes": "..."}
+ * {"versionCode": 2, "versionName": "1.1", "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.1/TugasKu.apk",
+ * "notes_id": "Satu butir per baris", "notes_en": "One item per line", "notes": "cadangan bila notes_id / notes_en kosong"}
  */
 object UpdateChecker {
 
@@ -32,6 +33,76 @@ object UpdateChecker {
         val apkUrl: String,
         val notes: String
     )
+
+    /** Hasil pengecekan terakhir yang disimpan, supaya halaman Tentang bisa menampilkannya tanpa koneksi. */
+    data class UpdateStatus(
+        /** Waktu pengecekan terakhir yang berhasil (epoch millis); 0 = belum pernah. */
+        val lastCheck: Long,
+        /** Nama versi baru bila ada pembaruan yang belum dipasang, selain itu null. */
+        val availableName: String?,
+        /** Catatan perubahan untuk versi yang sedang terpasang (kosong bila belum diketahui). */
+        val whatsNew: String
+    )
+
+    private const val STATUS_PREFS = "tugasku_update"
+    private const val KEY_LAST_CHECK = "last_check"
+    private const val KEY_AVAIL_CODE = "avail_code"
+    private const val KEY_AVAIL_NAME = "avail_name"
+    private const val KEY_NEW_CODE = "whatsnew_code"
+    private const val KEY_NEW_NOTES = "whatsnew_notes"
+    private const val KEY_NEW_NOTES_ID = "whatsnew_notes_id"
+    private const val KEY_NEW_NOTES_EN = "whatsnew_notes_en"
+
+    private fun isIndonesian(context: Context): Boolean =
+        context.resources.configuration.locales[0].language.let { it == "in" || it == "id" }
+
+    /** Pilih catatan sesuai bahasa aplikasi (notes_id / notes_en); jatuh ke "notes" bila kosong. */
+    private fun pickNotes(indonesian: Boolean, general: String, id: String, en: String): String =
+        (if (indonesian) id else en).ifBlank { general }
+
+    fun status(context: Context): UpdateStatus {
+        val p = context.applicationContext.getSharedPreferences(STATUS_PREFS, Context.MODE_PRIVATE)
+        val installed = installedVersionCode(context)
+        return UpdateStatus(
+            lastCheck = p.getLong(KEY_LAST_CHECK, 0L),
+            availableName = if (p.getLong(KEY_AVAIL_CODE, 0L) > installed) p.getString(KEY_AVAIL_NAME, null) else null,
+            whatsNew = if (p.getLong(KEY_NEW_CODE, 0L) == installed) {
+                pickNotes(
+                    isIndonesian(context),
+                    p.getString(KEY_NEW_NOTES, "").orEmpty(),
+                    p.getString(KEY_NEW_NOTES_ID, "").orEmpty(),
+                    p.getString(KEY_NEW_NOTES_EN, "").orEmpty()
+                )
+            } else ""
+        )
+    }
+
+    /** Simpan hasil pengecekan. Catatan "yang baru" hanya diambil bila versi di server = versi terpasang. */
+    private fun saveStatus(
+        context: Context,
+        code: Long,
+        name: String,
+        notes: String,
+        notesId: String,
+        notesEn: String,
+        installed: Long,
+        apkValid: Boolean
+    ) {
+        val e = context.applicationContext.getSharedPreferences(STATUS_PREFS, Context.MODE_PRIVATE).edit()
+        e.putLong(KEY_LAST_CHECK, System.currentTimeMillis())
+        if (code > installed && apkValid) {
+            e.putLong(KEY_AVAIL_CODE, code).putString(KEY_AVAIL_NAME, name)
+        } else {
+            e.putLong(KEY_AVAIL_CODE, 0L).remove(KEY_AVAIL_NAME)
+        }
+        if (code == installed) {
+            e.putLong(KEY_NEW_CODE, code)
+                .putString(KEY_NEW_NOTES, notes)
+                .putString(KEY_NEW_NOTES_ID, notesId)
+                .putString(KEY_NEW_NOTES_EN, notesEn)
+        }
+        e.apply()
+    }
 
     fun installedVersionCode(context: Context): Long =
         context.packageManager.getPackageInfo(context.packageName, 0).longVersionCode
@@ -51,14 +122,30 @@ object UpdateChecker {
             val json = JSONObject(conn.inputStream.bufferedReader().use { it.readText() })
             val code = json.getLong("versionCode")
             val apkUrl = json.optString("apkUrl")
-            if (code <= installedVersionCode(context) || !apkUrl.startsWith(APK_URL_PREFIX)) {
+            val installed = installedVersionCode(context)
+            saveStatus(
+                context,
+                code,
+                json.optString("versionName").ifBlank { code.toString() },
+                json.optString("notes"),
+                json.optString("notes_id"),
+                json.optString("notes_en"),
+                installed,
+                apkUrl.startsWith(APK_URL_PREFIX)
+            )
+            if (code <= installed || !apkUrl.startsWith(APK_URL_PREFIX)) {
                 null
             } else {
                 UpdateInfo(
                     versionCode = code,
                     versionName = json.optString("versionName").ifBlank { code.toString() },
                     apkUrl = apkUrl,
-                    notes = json.optString("notes")
+                    notes = pickNotes(
+                        isIndonesian(context),
+                        json.optString("notes"),
+                        json.optString("notes_id"),
+                        json.optString("notes_en")
+                    )
                 )
             }
         } finally {

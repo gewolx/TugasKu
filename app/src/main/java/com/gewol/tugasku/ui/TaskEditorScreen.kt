@@ -78,13 +78,16 @@ fun TaskEditorScreen(
     subjectColors: Map<String, Int>,
     onSubjectColor: (String, Int) -> Unit,
     onSave: (Task) -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    /** Isian awal untuk tugas baru (mis. dari teks yang dibagikan); diabaikan saat mengedit tugas. */
+    initialTitle: String = "",
+    initialNote: String = ""
 ) {
     val context = LocalContext.current
-    var title by rememberSaveable { mutableStateOf(existing?.title.orEmpty()) }
+    var title by rememberSaveable { mutableStateOf(existing?.title ?: initialTitle) }
     var subject by rememberSaveable { mutableStateOf(existing?.subject.orEmpty()) }
     var lecturer by rememberSaveable { mutableStateOf(existing?.lecturer.orEmpty()) }
-    var note by rememberSaveable { mutableStateOf(existing?.note.orEmpty()) }
+    var note by rememberSaveable { mutableStateOf(existing?.note ?: initialNote) }
     var deadline by rememberSaveable { mutableLongStateOf(existing?.deadline ?: defaultDeadline()) }
     var remind by rememberSaveable {
         mutableStateOf(existing?.reminders ?: defaultReminders)

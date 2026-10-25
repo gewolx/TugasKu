@@ -326,4 +326,26 @@
     <string name="nh_status_gone">Tugas dihapus</string>
     <string name="nh_update_title">Pembaruan tersedia</string>
     <string name="nh_update_message">Versi %1$s siap dipasang. Ketuk untuk memperbarui.</string>
+    <!-- Ringkasan harian -->
+    <string name="digest_channel_name">Ringkasan harian</string>
+    <string name="digest_channel_desc">Ringkasan tugas hari ini setiap pagi</string>
+    <string name="digest_title">Ringkasan hari ini</string>
+    <plurals name="digest_due_today">
+        <item quantity="other">%d tugas jatuh tempo hari ini</item>
+    </plurals>
+    <string name="digest_overdue">%d terlambat</string>
+    <string name="digest_more">+%d lainnya</string>
+    <string name="digest_setting_title">Ringkasan harian</string>
+    <string name="digest_setting_desc">Notifikasi pagi berisi tugas hari ini. Tidak dikirim jika tidak ada tugas.</string>
+    <string name="digest_setting_time">Dikirim pukul</string>
+    <!-- Tentang: laporan, yang baru, status pembaruan -->
+    <string name="about_report">Laporkan masalah</string>
+    <string name="about_report_subject">Laporan masalah TugasKu (v%s)</string>
+    <string name="about_report_hint">Tulis masalahnya di sini (apa yang kamu lakukan dan apa yang terjadi):</string>
+    <string name="about_whats_new">Yang baru di versi %s</string>
+    <string name="about_update_available">Versi %s tersedia</string>
+    <string name="about_last_never">Belum pernah dicek</string>
+    <string name="about_last_today">Terakhir dicek hari ini, %s</string>
+    <string name="about_last_yesterday">Terakhir dicek kemarin, %s</string>
+    <string name="about_last_date">Terakhir dicek %1$s, %2$s</string>
 </resources>

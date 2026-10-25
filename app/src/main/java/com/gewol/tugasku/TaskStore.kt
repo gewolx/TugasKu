@@ -60,6 +60,16 @@ class TaskStore(context: Context) {
         get() = prefs.getInt(KEY_ARCHIVE_DAYS, ARCHIVE_DAYS)
         set(value) = prefs.edit().putInt(KEY_ARCHIVE_DAYS, value).apply()
 
+    /** Ringkasan harian: notifikasi pagi berisi tugas hari ini. Aktif secara bawaan. */
+    var digestEnabled: Boolean
+        get() = prefs.getBoolean(KEY_DIGEST_ON, true)
+        set(value) = prefs.edit().putBoolean(KEY_DIGEST_ON, value).apply()
+
+    /** Jam ringkasan harian, dalam menit sejak tengah malam (bawaan 07.00 = 420). */
+    var digestMinutes: Int
+        get() = prefs.getInt(KEY_DIGEST_TIME, 7 * 60)
+        set(value) = prefs.edit().putInt(KEY_DIGEST_TIME, value).apply()
+
     /** true = minggu di kalender dimulai hari Minggu, false = Senin (bawaan). */
     var weekStartsSunday: Boolean
         get() = prefs.getBoolean(KEY_WEEK_SUNDAY, false)
@@ -92,6 +102,8 @@ class TaskStore(context: Context) {
         private const val KEY_SNOOZE = "snooze_minutes"
         private const val KEY_DEFAULT_REMIND = "default_reminders"
         private const val KEY_ARCHIVE_DAYS = "archive_days"
+        private const val KEY_DIGEST_ON = "digest_enabled"
+        private const val KEY_DIGEST_TIME = "digest_minutes"
         private const val KEY_WEEK_SUNDAY = "week_starts_sunday"
         private const val KEY_SORT_PRIORITY = "sort_by_priority"
         private const val KEY_SUBJECT_COLORS = "subject_colors"

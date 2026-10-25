@@ -29,6 +29,7 @@ import androidx.compose.material.icons.outlined.DeleteSweep
 import androidx.compose.material.icons.outlined.DoneAll
 import androidx.compose.material.icons.outlined.NotificationsNone
 import androidx.compose.material.icons.outlined.SystemUpdate
+import androidx.compose.material.icons.outlined.WbSunny
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -59,6 +60,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.gewol.tugasku.NOTIF_DEADLINE
+import com.gewol.tugasku.NOTIF_DIGEST
 import com.gewol.tugasku.NOTIF_UPDATE
 import com.gewol.tugasku.NotifRecord
 import com.gewol.tugasku.R
@@ -255,7 +257,11 @@ private fun NotifItem(
     onDelete: () -> Unit
 ) {
     val scheme = MaterialTheme.colorScheme
-    val icon: ImageVector = if (record.type == NOTIF_UPDATE) Icons.Outlined.SystemUpdate else Icons.Outlined.Alarm
+    val icon: ImageVector = when (record.type) {
+        NOTIF_UPDATE -> Icons.Outlined.SystemUpdate
+        NOTIF_DIGEST -> Icons.Outlined.WbSunny
+        else -> Icons.Outlined.Alarm
+    }
     val borderColor = if (record.read) scheme.outline.copy(alpha = 0.35f) else scheme.primary.copy(alpha = 0.7f)
 
     Card(

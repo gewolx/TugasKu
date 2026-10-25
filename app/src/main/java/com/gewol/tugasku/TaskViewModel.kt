@@ -61,9 +61,27 @@ class TaskViewModel(app: Application) : AndroidViewModel(app) {
     private val _sortByPriority = mutableStateOf(store.sortByPriority)
     val sortByPriority: Boolean get() = _sortByPriority.value
 
+    private val _digestEnabled = mutableStateOf(store.digestEnabled)
+    val digestEnabled: Boolean get() = _digestEnabled.value
+
+    private val _digestMinutes = mutableStateOf(store.digestMinutes)
+    val digestMinutes: Int get() = _digestMinutes.value
+
     /** Warna mata kuliah pilihan pengguna ([subjectKey] -> indeks palet). */
     private val _subjectColors = mutableStateOf(store.subjectColors)
     val subjectColors: Map<String, Int> get() = _subjectColors.value
+
+    /** Teks yang baru dibagikan dari aplikasi lain; diambil sekali oleh layar utama lalu dikosongkan. */
+    var pendingShare by mutableStateOf<SharedTask?>(null)
+        private set
+
+    fun receiveShare(task: SharedTask) {
+        pendingShare = task
+    }
+
+    fun clearShare() {
+        pendingShare = null
+    }
 
     /** Riwayat notifikasi (terbaru di atas). */
     private val _notifications = mutableStateOf(NotificationHistory.load(app))
@@ -108,6 +126,18 @@ class TaskViewModel(app: Application) : AndroidViewModel(app) {
         store.weekStartsSunday = value
     }
 
+    fun setDigestEnabled(value: Boolean) {
+        _digestEnabled.value = value
+        store.digestEnabled = value
+        DigestScheduler.schedule(ctx)
+    }
+
+    fun setDigestMinutes(minutes: Int) {
+        _digestMinutes.value = minutes
+        store.digestMinutes = minutes
+        DigestScheduler.schedule(ctx)
+    }
+
     fun setSortByPriority(value: Boolean) {
         _sortByPriority.value = value
         store.sortByPriority = value
@@ -132,6 +162,9 @@ class TaskViewModel(app: Application) : AndroidViewModel(app) {
         _weekStartsSunday.value = store.weekStartsSunday
         _sortByPriority.value = store.sortByPriority
         _subjectColors.value = store.subjectColors
+        _digestEnabled.value = store.digestEnabled
+        _digestMinutes.value = store.digestMinutes
+        DigestScheduler.schedule(ctx)
         all = maintain(store.load())
         refreshWidget()
     }

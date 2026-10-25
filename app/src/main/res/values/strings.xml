@@ -345,4 +345,27 @@
     <string name="nh_status_gone">Task deleted</string>
     <string name="nh_update_title">Update available</string>
     <string name="nh_update_message">Version %1$s is ready. Tap to update.</string>
+    <!-- Daily digest -->
+    <string name="digest_channel_name">Daily summary</string>
+    <string name="digest_channel_desc">A morning summary of today\'s tasks</string>
+    <string name="digest_title">Daily summary</string>
+    <plurals name="digest_due_today">
+        <item quantity="one">%d task due today</item>
+        <item quantity="other">%d tasks due today</item>
+    </plurals>
+    <string name="digest_overdue">%d overdue</string>
+    <string name="digest_more">+%d more</string>
+    <string name="digest_setting_title">Daily summary</string>
+    <string name="digest_setting_desc">A morning notification with today\'s tasks. Not sent when nothing is due.</string>
+    <string name="digest_setting_time">Send at</string>
+    <!-- About: report, what's new, update status -->
+    <string name="about_report">Report a problem</string>
+    <string name="about_report_subject">TugasKu problem report (v%s)</string>
+    <string name="about_report_hint">Describe the problem here (what you did and what happened):</string>
+    <string name="about_whats_new">What\'s new in version %s</string>
+    <string name="about_update_available">Version %s available</string>
+    <string name="about_last_never">Not checked yet</string>
+    <string name="about_last_today">Last checked today, %s</string>
+    <string name="about_last_yesterday">Last checked yesterday, %s</string>
+    <string name="about_last_date">Last checked %1$s, %2$s</string>
 </resources>

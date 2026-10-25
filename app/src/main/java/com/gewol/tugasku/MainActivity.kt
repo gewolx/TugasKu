@@ -4,6 +4,7 @@ package com.gewol.tugasku
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -60,10 +61,24 @@ class MainActivity : ComponentActivity() {
         vm.reload()
     }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleShare(intent)
+    }
+
+    /** Teks dari menu "Bagikan" aplikasi lain -> editor tugas baru. */
+    private fun handleShare(intent: Intent?) {
+        ShareIntake.parse(intent)?.let { vm.receiveShare(it) }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         NotificationHelper.ensureChannel(this)
+        DigestScheduler.schedule(this)
+        // Setelah layar diputar / proses dipulihkan, jangan proses kiriman yang sama dua kali.
+        if (savedInstanceState == null) handleShare(intent)
         setContent {
             TugasKuApp(vm)
         }
@@ -215,6 +230,16 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
         mutableStateOf(false)
     }
 
+    // Isian awal editor dari teks yang dibagikan (null = editor kosong seperti biasa)
+    var shareDraft by remember { mutableStateOf<SharedTask?>(null) }
+    LaunchedEffect(vm.pendingShare) {
+        vm.pendingShare?.let {
+            shareDraft = it
+            vm.clearShare()
+            editorId = NEW
+        }
+    }
+
     // Posisi scroll Pengaturan disimpan di sini agar tidak kembali ke atas setelah dari halaman Tentang
     val settingsScroll = rememberScrollState()
 
@@ -283,7 +308,10 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                 when (current) {
                     // Editor tugas
                     2 -> {
+                        key(shareDraft?.seq) {
                         TaskEditorScreen(
+                            initialTitle = shareDraft?.title.orEmpty(),
+                            initialNote = shareDraft?.note.orEmpty(),
                             existing = vm.tasks.find {
                                 it.id == editorId
                             },
@@ -299,6 +327,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                                 editorId = NONE
                             }
                         )
+                        }
                     }
 
                     // Arsip dan sampah
@@ -346,6 +375,10 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                             onArchiveDays = vm::setArchiveDays,
                             weekStartsSunday = vm.weekStartsSunday,
                             onWeekStartsSunday = vm::setWeekStartsSunday,
+                            digestEnabled = vm.digestEnabled,
+                            onDigestEnabled = vm::setDigestEnabled,
+                            digestMinutes = vm.digestMinutes,
+                            onDigestMinutes = vm::setDigestMinutes,
 
                             onBackup = {
                                 exportLauncher.launch("tugasku-backup-${LocalDate.now()}.json")
@@ -386,6 +419,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                     5 -> {
                         AboutScreen(
                             developerEmail = "gewol.dev@gmail.com",
+                            use24Hour = vm.use24Hour,
                             onCheckUpdate = { checkForUpdate(true) },
                             checkingUpdate = checkingUpdate,
                             onBack = {
@@ -421,6 +455,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                                         // Buka editor bila tugasnya masih ada
                                         if (vm.tasks.any { it.id == record.taskId }) editorId = record.taskId
                                     NOTIF_UPDATE -> checkForUpdate(true)
+                                    NOTIF_DIGEST -> showNotif = false
                                 }
                             },
                             onMarkAllRead = vm::markAllNotificationsRead,
@@ -453,6 +488,7 @@ fun TugasKuApp(vm: TaskViewModel = viewModel()) {
                                 showArchive = true
                             },
                             onAdd = {
+                                shareDraft = null
                                 editorId = NEW
                             },
                             onEdit = {

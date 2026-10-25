@@ -7,6 +7,7 @@ import org.json.JSONObject
 /** Jenis notifikasi di riwayat. */
 const val NOTIF_DEADLINE = 0   // pengingat deadline tugas
 const val NOTIF_UPDATE = 1     // pembaruan aplikasi tersedia
+const val NOTIF_DIGEST = 2     // ringkasan harian
 
 /** Satu catatan notifikasi. [taskId] hanya terisi untuk [NOTIF_DEADLINE]. */
 data class NotifRecord(
