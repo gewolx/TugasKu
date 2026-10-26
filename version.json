@@ -1,8 +1,8 @@
 {
-  "versionCode": 4,
-  "versionName": "1.5",
-  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.5/TugasKu.apk",
-  "notes_id": "Tag untuk melabeli tugas (kelompok, ujian, organisasi) dan filter berdasarkan tag\nTugas kelompok: daftar anggota dan catatan pembagian tugas\nTemplate tugas dengan subtugas bawaan, dikelola di Pengaturan\nPencarian kini mencakup tag dan nama anggota\nCadangan data menyertakan tag, anggota, dan template\nPerbaikan bug dan warna tombol",
-  "notes_en": "Tags to label tasks (group, exam, organization) and filter by tag\nGroup tasks: member list and task division notes\nTask templates with preset subtasks, managed in Settings\nSearch now covers tags and member names\nBackups now include tags, members, and templates\nBug fixes and button color fixes",
-  "notes": "Tag untuk melabeli tugas (kelompok, ujian, organisasi) dan filter berdasarkan tag\nTugas kelompok: daftar anggota dan catatan pembagian tugas\nTemplate tugas dengan subtugas bawaan, dikelola di Pengaturan\nPencarian kini mencakup tag dan nama anggota\nCadangan data menyertakan tag, anggota, dan template\nPerbaikan bug dan warna tombol"
+  "versionCode": 5,
+  "versionName": "1.7",
+  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.7/TugasKu.apk",
+  "notes_id": "• Pengingat fleksibel: sesuaikan waktu pengingat bebas atau pilih tanggal & jam tertentu\n• Lampiran fleksibel: input dokumen/file apa saja dari HP (PDF, Word, Excel, PPT, ZIP, dll.)\n• Tautan dan dokumen lampiran kini langsung bisa diketuk untuk dibuka",
+  "notes_en": "• Flexible reminders: customize reminder times or pick specific date & time\n• Universal file attachments: attach any file from device storage (PDF, DOC, XLS, PPT, ZIP, etc.)\n• Links and document attachments can now be tapped directly to open",
+  "notes": "Pembaruan v1.7: Pengingat kustom dan input file fleksibel"
 }
