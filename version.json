@@ -2,7 +2,7 @@
   "versionCode": 5,
   "versionName": "1.7",
   "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.7/TugasKu.apk",
-  "notes_id": "• Pengingat fleksibel: sesuaikan waktu pengingat bebas atau pilih tanggal & jam tertentu\n• Lampiran fleksibel: input dokumen/file apa saja dari HP (PDF, Word, Excel, PPT, ZIP, dll.)\n• Tautan dan dokumen lampiran kini langsung bisa diketuk untuk dibuka",
-  "notes_en": "• Flexible reminders: customize reminder times or pick specific date & time\n• Universal file attachments: attach any file from device storage (PDF, DOC, XLS, PPT, ZIP, etc.)\n• Links and document attachments can now be tapped directly to open",
-  "notes": "Pembaruan v1.7: Pengingat kustom dan input file fleksibel"
+  "notes_id": "✨ Pengingat lebih fleksibel\nAtur pengingat sesuai kebutuhan, atau pilih tanggal dan jam tertentu.\n\n📎 Lampirkan berbagai jenis file\nTambahkan PDF, Word, Excel, PowerPoint, ZIP, dan file lainnya dari perangkat.\n\n🔗 Tautan dan lampiran lebih praktis\nKetuk tautan atau dokumen untuk langsung membukanya.",
+  "notes_en": "✨ More flexible reminders\nSet reminders your way, or choose a specific date and time.\n\n📎 Attach files with ease\nAdd PDFs, Word documents, Excel spreadsheets, PowerPoint files, ZIP archives, and more.\n\n🔗 Open links and attachments easily\nTap a link or document to open it directly.",
+  "notes": "✨ TugasKu v1.7 — Pengingat fleksibel, lampiran universal, dan akses cepat ke tautan."
 }
