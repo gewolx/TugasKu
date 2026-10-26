@@ -68,13 +68,16 @@ Punya saran atau menemukan bug? Kirim email ke [gewol.dev@gmail.com](mailto:gewo
 
 **Gewol (Didik Pribadi)**
 
-- [GitHub](https://github.com/gewolx)
-- [Instagram](https://instagram.com/didikpribadii)
-- [TikTok](https://www.tiktok.com/@gewolx)
-- [YouTube](https://www.youtube.com/@gewolx)
+<p>
+  <a href="https://github.com/gewolx"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-gewolx-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+  <a href="https://instagram.com/didikpribadii"><img alt="Instagram" src="https://img.shields.io/badge/Instagram-didikpribadii-E4405F?style=for-the-badge&logo=instagram&logoColor=white"></a>
+  <a href="https://www.tiktok.com/@gewolx"><img alt="TikTok" src="https://img.shields.io/badge/TikTok-%40gewolx-000000?style=for-the-badge&logo=tiktok&logoColor=white"></a>
+  <a href="https://www.youtube.com/@gewolx"><img alt="YouTube" src="https://img.shields.io/badge/YouTube-%40gewolx-FF0000?style=for-the-badge&logo=youtube&logoColor=white"></a>
+</p>
 
 ## Teknologi
 
 - Kotlin
 - Jetpack Compose
+
 
