@@ -1,8 +1,8 @@
 {
   "versionCode": 5,
-  "versionName": "1.7",
-  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.7/TugasKu.apk",
-  "notes_id": "• Pengingat fleksibel: atur waktu pengingat sesuai kebutuhan atau pilih tanggal dan jam tertentu.\n• Lampiran beragam: tambahkan PDF, Word, Excel, PowerPoint, ZIP, dan file lainnya dari perangkat.\n• Akses lebih cepat: ketuk tautan atau dokumen lampiran untuk langsung membukanya.",
-  "notes_en": "• Flexible reminders: set a reminder time or choose a specific date and time.\n• More file types: attach PDFs, Word documents, Excel spreadsheets, PowerPoint files, ZIP archives, and more.\n• Faster access: tap a link or document attachment to open it directly.",
-  "notes": "Pembaruan v1.7: pengingat fleksibel, lampiran beragam, dan akses lebih cepat."
+  "versionName": "1.9",
+  "apkUrl": "https://github.com/gewolx/TugasKu/releases/download/v1.9/TugasKu.apk",
+  "notes_id": "🎉 Yang Baru di TugasKu v1.9\n\n• Hubungi & Ikuti Saya: tautan GitHub, Instagram, TikTok, YouTube, dan email kini tersedia di layar Tentang Aplikasi.\n• Ikon dapat diketuk untuk membuka profil atau mengirim email, dengan tampilan yang menyesuaikan tema terang dan gelap.\n• Informasi hak cipta diperbarui menjadi © 2026 Gewol (Didik Pribadi). Hak cipta dilindungi.\n\n🎉 Pembaruan Sebelumnya — v1.7\n\n• Pengingat kustom: atur pengingat relatif dalam menit, jam, hari, atau minggu, atau pilih tanggal dan jam tertentu.\n• Kelola pengingat kustom dengan mengetuk chip untuk mengedit atau menghapusnya.\n• Lampiran fleksibel: pilih berbagai jenis file dan beberapa file sekaligus dari perangkat.\n• Informasi lampiran: lihat nama, ukuran, dan jenis file melalui badge berwarna.\n• Akses cepat: buka tautan dan dokumen lampiran langsung dari editor atau kartu tugas.",
+  "notes_en": "🎉 What's New in TugasKu v1.9\n\n• Contact & Follow Me: GitHub, Instagram, TikTok, YouTube, and email links are now available on the About screen.\n• Tap an icon to open a profile or compose an email. Icons adapt to light and dark themes.\n• Copyright information updated to © 2026 Gewol (Didik Pribadi). All rights reserved.\n\n🎉 Previous Update — v1.7\n\n• Custom reminders: set reminders relative to a deadline in minutes, hours, days, or weeks, or choose a specific date and time.\n• Manage custom reminders by tapping a reminder chip to edit or remove it.\n• Flexible attachments: select various file types and multiple files from your device.\n• Attachment details: view file names, sizes, and types with colored badges.\n• Quick access: open links and attached documents directly from the editor or task cards.",
+  "notes": "Pembaruan TugasKu v1.9: tautan sosial dan email di Tentang Aplikasi, serta informasi hak cipta baru."
 }
