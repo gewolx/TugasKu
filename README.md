@@ -77,7 +77,8 @@ Punya saran atau menemukan bug? Kirim email ke [gewol.dev@gmail.com](mailto:gewo
 
 ## Teknologi
 
-- Kotlin
-- Jetpack Compose
+- **Kotlin** — bahasa pemrograman yang digunakan untuk membangun logika aplikasi Android.
+- **Jetpack Compose** — toolkit UI modern Android untuk membuat tampilan secara deklaratif menggunakan komponen Kotlin.
+
 
 
