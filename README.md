@@ -8,7 +8,7 @@
 <p align="center">
   <a href="https://github.com/gewolx/TugasKu/releases"><img alt="Unduh APK" src="https://img.shields.io/badge/Unduh-APK-2864E8?style=for-the-badge&logo=android&logoColor=white"></a>
   <img alt="Platform Android" src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
-  <img alt="Versi 1.9" src="https://img.shields.io/badge/Versi-1.9-8AB4FF?style=for-the-badge">
+  <img alt="Versi 2.0" src="https://img.shields.io/badge/Versi-2.0-8AB4FF?style=for-the-badge">
 </p>
 
 ## Tampilan aplikasi
