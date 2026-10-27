@@ -12,6 +12,7 @@ import org.json.JSONObject
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
+import java.security.MessageDigest
 
 object UpdateChecker {
 
@@ -23,7 +24,8 @@ object UpdateChecker {
         val versionCode: Long,
         val versionName: String,
         val apkUrl: String,
-        val notes: String
+        val notes: String,
+        val sha256: String // NEW: expected checksum, lowercase hex, from version.json
     )
 
     data class UpdateStatus(
@@ -106,7 +108,9 @@ object UpdateChecker {
             val json = JSONObject(conn.inputStream.bufferedReader().use { it.readText() })
             val code = json.getLong("versionCode")
             val apkUrl = json.optString("apkUrl")
+            val sha256 = json.optString("sha256").lowercase() // NEW: required field in version.json
             val installed = installedVersionCode(context)
+            val looksValid = apkUrl.startsWith(APK_URL_PREFIX) && sha256.length == 64
             saveStatus(
                 context,
                 code,
@@ -115,9 +119,9 @@ object UpdateChecker {
                 json.optString("notes_id"),
                 json.optString("notes_en"),
                 installed,
-                apkUrl.startsWith(APK_URL_PREFIX)
+                looksValid
             )
-            if (code <= installed || !apkUrl.startsWith(APK_URL_PREFIX)) {
+            if (code <= installed || !looksValid) {
                 null
             } else {
                 UpdateInfo(
@@ -129,7 +133,8 @@ object UpdateChecker {
                         json.optString("notes"),
                         json.optString("notes_id"),
                         json.optString("notes_en")
-                    )
+                    ),
+                    sha256 = sha256
                 )
             }
         } finally {
@@ -149,6 +154,7 @@ object UpdateChecker {
             try {
                 if (conn.responseCode != HttpURLConnection.HTTP_OK) error("HTTP ${conn.responseCode}")
                 val total = conn.contentLengthLong
+                val digest = MessageDigest.getInstance("SHA-256") // NEW
                 conn.inputStream.use { input ->
                     file.outputStream().use { output ->
                         val buffer = ByteArray(32 * 1024)
@@ -159,6 +165,7 @@ object UpdateChecker {
                             if (read == -1) break
                             ensureActive()
                             output.write(buffer, 0, read)
+                            digest.update(buffer, 0, read) // NEW: feed checksum as we go
                             done += read
                             if (total > 0) {
                                 val percent = (done * 100 / total).toInt()
@@ -170,8 +177,17 @@ object UpdateChecker {
                         }
                     }
                 }
+
+                // NEW: verify checksum BEFORE trusting the file at all
+                val actualHash = digest.digest().joinToString("") { "%02x".format(it) }
+                if (!actualHash.equals(info.sha256, ignoreCase = true)) {
+                    error("Checksum APK tidak cocok (kemungkinan file rusak atau dimanipulasi)")
+                }
+
+                // Existing check: package name must match (kept as extra guard)
                 val archive = context.packageManager.getPackageArchiveInfo(file.path, 0)
                 if (archive?.packageName != context.packageName) error("APK tidak valid")
+
                 file
             } catch (e: Exception) {
                 file.delete()
